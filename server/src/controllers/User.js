@@ -4,9 +4,10 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 export const signUp = async (req, res) => {
+  const saltRounds = 10
   try {
-    const salt = bcrypt.genSaltSync()
-    const hash = bcrypt.hashSync(req.body.password, salt)
+    // const salt = bcrypt.genSaltSync()
+    const hash = bcrypt.hashSync(req.body.password, saltRounds)
     const newUser = new User({ ...req.body, password: hash })
     await newUser.save()
     res.status(200).json('User Created')
