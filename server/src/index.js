@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import userRouter from './routes/userRoutes.js'
 import subRouter from './routes/subRoutes.js'
 import dotenv from 'dotenv'
+import bodyParser from 'body-parser'
 
 const app = express()
 const PORT = 3000
@@ -14,6 +15,7 @@ dotenv.config()
 app.use(cors({ credentials: true, origin: true }))
 app.use(cookieParser())
 app.use(express.json())
+app.use(bodyParser.json())
 
 app.use('/api', userRouter)
 app.use('/api', subRouter)
