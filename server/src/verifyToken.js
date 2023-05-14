@@ -3,7 +3,7 @@ import { createError } from './error.js'
 
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.access_token
-  console.log('cookie' + req.cookies.access_token)
+  console.log('cookie ' + req.cookies.access_token)
   if (!token) return console.log('not auth')
 
   jwt.verify(token, process.env.JWT, (err, user) => {

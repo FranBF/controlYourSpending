@@ -29,8 +29,10 @@ export const signIn = async (req, res, next) => {
     const { password, ...others } = user._doc // le quito la contraseña y le devuelvo lo otro
 
     res.cookie('access_token', token, {
-      httpOnly: true
-    }, { sameSite: 'none', secure: true }).status(200).json(others)
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true
+    }).status(200).json(others)
     console.log(others)
   } catch (error) {
     next(error)
